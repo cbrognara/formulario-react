@@ -56,6 +56,7 @@ function DadosPessoais({onSubmit, validarCPF} ) {
     helperText={erros.cpf.texto}
     id="cpf" 
     label="CPF" 
+    required
     variant="outlined" 
     fullWidth 
     margin='normal'
@@ -86,7 +87,7 @@ function DadosPessoais({onSubmit, validarCPF} ) {
     <Button 
     type='submit' 
     variant='contained'
-     color='primary'>Cadastrar
+     color='primary'>Próximo
      </Button>
     </form>
   )

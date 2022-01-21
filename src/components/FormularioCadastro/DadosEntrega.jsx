@@ -7,7 +7,8 @@ function DadosEntrega() {
       <TextField 
       id='cep'
       label='CEP' 
-      type='number' 
+      type='number'
+      required 
       variant="outlined"
       margin='normal'/>
       
