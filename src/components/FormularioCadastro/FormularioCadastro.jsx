@@ -1,3 +1,4 @@
+import { Step, Stepper, Typography, StepLabel } from '@material-ui/core';
 import React, {useEffect, useState} from 'react';
 import DadosEntrega from './DadosEntrega';
 import DadosPessoais from './DadosPessoais';
@@ -9,7 +10,7 @@ function FormularioCadastro({onSubmit, validarCPF} ) {
   const [dadosColetados, setDados] = useState({})
   
   useEffect(() => {
-    if(etapaAtual === formularios.length) {
+    if(etapaAtual === formularios.length-1) {
     onSubmit(dadosColetados)
     }
   }) 
@@ -18,6 +19,7 @@ function FormularioCadastro({onSubmit, validarCPF} ) {
   <DadosUsuario onSubmit={coletarDados}/>, 
   <DadosPessoais onSubmit={coletarDados} validarCPF={validarCPF}/>, 
   <DadosEntrega onSubmit={coletarDados}/>, 
+  <Typography variant='h5'>Obrigado pelo cadastro!</Typography>
   ]
 
   function coletarDados(dados) {
@@ -29,7 +31,16 @@ function FormularioCadastro({onSubmit, validarCPF} ) {
     setEtapaAtual(etapaAtual + 1)
   }
 
-  return <>{formularios[etapaAtual]}</>
+  return <>
+  <Stepper activeStep={etapaAtual}>
+    <Step><StepLabel>Login</StepLabel></Step>
+    <Step><StepLabel>Pessoal</StepLabel></Step>
+    <Step><StepLabel>Entrega</StepLabel></Step>
+    <Step><StepLabel>Finalização</StepLabel></Step>
+
+  </Stepper>
+  {formularios[etapaAtual]}
+  </>
 }
 
 export default FormularioCadastro
